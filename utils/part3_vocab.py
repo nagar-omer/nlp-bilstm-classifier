@@ -1,4 +1,4 @@
-from utils.part3_params import START, END, UNKNOWN, SUF, PREF
+from utils.part3_params import START, END, UNKNOWN, SUF, PREF, PAD
 import numpy as np
 
 
@@ -23,9 +23,9 @@ class Vocabulary:
 
     @staticmethod
     def _vocab_from_train(src_file, labeled):
-        all_words = []
-        all_suf = []
-        all_pref = []
+        all_words = [PAD]
+        all_suf = [PAD]
+        all_pref = [PAD]
 
         src = open(src_file, "rt")
         for i, row in enumerate(src):
@@ -55,7 +55,7 @@ class Vocabulary:
 
     @staticmethod
     def _read_map_file(map_file):
-        list_words = []
+        list_words = [PAD]
         map_file = open(map_file, "rt")
         for row in map_file:
             list_words.append(row.strip())
